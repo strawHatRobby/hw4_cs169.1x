@@ -31,7 +31,11 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
   And I should see "The Incredibles"
   And I should see "The Terminator"
   And I should see "When Harry Met Sally"
-  
+  And I should not see "The Help"
+  And I should not see "Chocolat"
+  And I should not see "Aladdin"
+  And I should not see "Chicken Run"
+  And I should not see "2001: A Space Odyssey"
   
  
   
@@ -43,3 +47,7 @@ Scenario: restrict to movies with 'PG' or 'R' ratings
 
 Scenario: all ratings selected
   # see assignment
+  When I check the following ratings: PG, R, PG-13, G
+  And press "Refresh"
+  Then I should be on the homepage
+  And I should see all the movies
